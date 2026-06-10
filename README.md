@@ -1,1 +1,0 @@
-# Blog-Tech-Isadora-2
