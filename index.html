@@ -1,54 +1,221 @@
 <!DOCTYPE html>
-
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" 
-content="width=device-width, initial-scale=1.0">
-<title>Blog</title>
-<style>
- body {
-  display: flex;
-  margin: 0;
-  font-family: Arial, sans-serif;
- }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineDev - Blog de Cinema Dinâmico</title>
+    <style>
+        /* Cores Temáticas e Configurações Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
- header{
-  background-color: rgb(112, 8, 24);
-  color: rgb(255, 255, 255) ;
-  text-align: center;
-  width: 50%;
-  height: 100vh;
-  padding: 20px;
-  border: 5px solid #cf1010;
-  overflow-y: auto;
-  box-sizing: border-box;
- }  
- 
- main {
-    background-color: rgb(255, 255, 255);
-    color: rgb(112, 8, 24);
-    width: 50%;
-    height: 100vh;
-    padding: 20px;
-    border-left: 5px solid #cf1010;
-    overflow-y: auto;
-    box-sizing: border-box;
- }
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+        }
 
-</style>
-<head>  
-<body>
-    <header>
-        <h1>Meu blog Tech</h1>
-        <p>Vou compartilhar conhecimentos sobre o meio ambiente e formas de mantê-lo preservado.</p>
-    </header>
+        /* Cabeçalho de Auto Impacto */
+        header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #0f172a 100%);
+            text-align: center;
+            padding: 70px 20px;
+            border-bottom: 5px solid #ff4b5c;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 75, 92, 0.6);
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+
+        /* Cards Customizados com Cores por Gênero */
+        .card-filme {
+            background-color: #161e2e;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card-filme:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Diferenciação de Cores nas Bordas de acordo com o filme */
+        .ficcao { border-left: 6px solid #00d2ff; }
+        .ficcao:hover { box-shadow: 0 15px 35px rgba(0, 210, 255, 0.2); }
         
-     <main>
-        <h2>Meu primeiro Post</h2> 
-        <p>Por: Isadora Mariah de Oliveira</p>
-        <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar fatos curiosos sobre a natureza e meio ambiente e maneiras de mantê-lo preservado.</p>
-     </main>
+        .multiverso { border-left: 6px solid #ff007f; }
+        .multiverso:hover { box-shadow: 0 15px 35px rgba(255, 0, 127, 0.2); }
+        
+        .suspense { border-left: 6px solid #ffaa00; }
+        .suspense:hover { box-shadow: 0 15px 35px rgba(255, 170, 0, 0.2); }
+
+        /* Imagens Imersivas */
+        .card-filme img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        /* Conteúdo Interno */
+        .conteudo-filme {
+            padding: 40px;
+        }
+
+        /* Tags de Categorias com Cores Vibrantes */
+        .categoria {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .bg-ficcao { background: linear-gradient(90deg, #00d2ff, #0066ff); }
+        .bg-multiverso { background: linear-gradient(90deg, #ff007f, #7928ca); }
+        .bg-suspense { background: linear-gradient(90deg, #ffaa00, #ff4500); }
+
+        .conteudo-filme h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .data {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        /* Resenhas Alinhadas */
+        .resenha {
+            line-height: 1.8;
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* Caixa de Recomendação / Sugestão */
+        .sugestao-bloco {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sugestao-bloco h4 {
+            color: #f43f5e;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .sugestao-bloco p {
+            color: #94a3b8;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #090d16;
+            color: #475569;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎬 CineDev Blog</h1>
+        <p>Explorando obras-primas do cinema com cores vibrantes e resenhas diretas ao ponto.</p>
+    </header>
+
+    <main class="container">
+        
+        <article class="card-filme ficcao">
+            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200" alt="Espaço sideral profundo com nebulosas representando Interestelar">
+            <div class="conteudo-filme">
+                <span class="categoria bg-ficcao">Ficção Científica</span>
+                <h2>Interestelar (2014)</h2>
+                <p class="data">Por: Equipe CineDev</p>
+                <p class="resenha">
+                    Interestelar brilha como uma das maiores ficções científicas do século ao unir precisão astronômica com um drama familiar profundamente doloroso e real. Christopher Nolan utiliza buracos negros e distorções temporais para testar os limites do amor entre um pai e sua filha separados por galáxias inteiras. A trilha sonora orgânica de Hans Zimmer dita o ritmo tenso de uma corrida desesperada pela sobrevivência de toda a nossa espécie. Visualmente impecável e cientificamente corajoso, é um filme que expande nossa mente enquanto esmaga o coração.
+                </p>
+                <div class="sugestao-bloco">
+                    <h4>💡 Sugestão de Maratona</h4>
+                    <p>Ideal para assistir em uma tela grande à noite. Se você gostar, veja também <strong>"A Chegada"</strong> ou <strong>"Contato"</strong>.</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="card-filme multiverso">
+            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200" alt="Explosão de luzes coloridas e abstratas representando o multiverso">
+            <div class="conteudo-filme">
+                <span class="categoria bg-multiverso">Ação / Multiverso</span>
+                <h2>Tudo em Todo o Lugar ao Mesmo Tempo (2022)</h2>
+                <p class="data">Por: Equipe CineDev</p>
+                <p class="resenha">
+                    Este longa transforma o conceito saturado de multiverso em uma explosão caótica de criatividade pura, humor absurdo e profunda sensibilidade emocional. Acompanhamos uma dona de lavanderia exausta que precisa acessar habilidades de suas versões alternativas para impedir o colapso de toda a realidade existente. Por trás das lutas frenéticas de artes marciais e piadas bizarras, pulsa uma belíssima metáfora sobre depressão, niilismo e reconciliação familiar. Vencedor do Oscar, prova que o cinema original ainda consegue surpreender e emocionar na mesma medida.
+                </p>
+                <div class="sugestao-bloco">
+                    <h4>💡 Sugestão de Maratona</h4>
+                    <p>Prepare-se para rir e chorar rápido. Combine esse filme com <strong>"Scott Pilgrim Contra o Mundo"</strong> para um combo pop visual.</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="card-filme suspense">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" alt="Mansão moderna de luxo minimalista representando a casa de Parasita">
+            <div class="conteudo-filme">
+                <span class="categoria bg-suspense">Suspense / Drama</span>
+                <h2>Parasita (2019)</h2>
+                <p class="data">Por: Equipe CineDev</p>
+                <p class="resenha">
+                    Parasita é uma obra-prima cirúrgica que começa como uma comédia de golpes leves e se transforma gradualmente em um thriller sufocante e violento. O diretor Bong Joon Ho utiliza a arquitetura de uma mansão luxuosa e de um porão úmido para escancarar o abismo social moderno. Cada linha de diálogo é milimetricamente calculada e as reviravoltas na metade do filme mudam completamente as regras do jogo. É uma sátira social devastadora que não escolhe heróis ou vilões puros, deixando o espectador completamente sem fôlego.
+                </p>
+                <div class="sugestao-bloco">
+                    <h4>💡 Sugestão de Maratona</h4>
+                    <p>Perfeito para quem gosta de finais imprevisíveis. Assista na sequência o clássico sul-coreano <strong>"Em Chamas"</strong>.</p>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CineDev Blog. Desenvolvido com cores, estilo e paixão diretamente no VS Code.</p>
+    </footer>
 
 </body>
 </html>
